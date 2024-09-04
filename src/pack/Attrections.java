@@ -7,6 +7,7 @@ public class Attrections {
     private String dayWork, hourWork;
     private int timeView;
 
+
     //Констрктор
     public Attrections(String name, double rayting, int price, String dayWork, String hourWork, int timeView) {
         this.name = name;

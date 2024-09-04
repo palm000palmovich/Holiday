@@ -16,4 +16,5 @@ public class AttractionsNear extends Attrections{
     public String toString() {
         return   getName() + "идти: " + distance + " км.";
     }
+
 }

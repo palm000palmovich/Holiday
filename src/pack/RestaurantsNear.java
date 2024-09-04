@@ -16,4 +16,5 @@ public class RestaurantsNear extends Restaurant{
     public String toString() {
         return "идти " + distance + " км.";
     }
+
 }

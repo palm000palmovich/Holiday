@@ -53,4 +53,5 @@ public class Restaurant{
                 ", рейтинг " + rayting +
                 ", часы работы " + hours;
     }
+
 }
