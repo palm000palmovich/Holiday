@@ -51,7 +51,7 @@ public class Restaurant{
         return "Кухня: " + kitchen + ',' + '\n' +
                 " стоиомость " + price +
                 ", рейтинг " + rayting +
-                ", часы работы " + hours;
+                ", часы работы " + hours ;
     }
 
 }

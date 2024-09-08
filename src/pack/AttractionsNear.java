@@ -20,7 +20,7 @@ public class AttractionsNear extends Attrections{
 
     @Override
     public String toString() {
-        return   getName() + "идти: " + distance + " км, " + driveTime + " час.";
+        return   getName() + " идти: " + distance + " км, " + driveTime + " час.";
     }
 
 }

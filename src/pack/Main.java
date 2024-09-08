@@ -8,7 +8,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         Plan plan = new Plan(3,new int[]{2, 3, 4}, 52000);
-/*
+
         //Заполнение плана. срок, дни недели, бюджет
         System.out.println("Давайте заполним ваш план отпуска.");
         System.out.println("Введите количество дней.");
@@ -29,7 +29,7 @@ public class Main {
         scanner.nextLine();
         System.out.println(plan);
 
-*/
+
 
         //нахождение 2-х крайних дней
         int[] mas = plan.getDaysForHoliday();
@@ -48,16 +48,16 @@ public class Main {
 
         //Заполнение достопримечательностей и соседних к ним
         Attrections[] attrs = new Attrections[4];
-        attrs[0] = new Attrections("Памятник банану", 9.0, 4500, 1, "12:00 - 17:30", 1.5);
+        attrs[0] = new Attrections("Памятник банану", 9.0, 4500, 1, "12:00 - 17:30", 2.5);
         attrs[1] = new Attrections("Зоопарк", 6.5, 2000, 2, "10:00 - 20:00", 3.3);
-        attrs[2] = new Attrections("Музей искусства", 7, 3000, 4, "11:30- 19:30", 2.5);
-        attrs[3] = new Attrections("Концерт Трэвиса Скотта" , 10.0, 15000, 5, "18:00 - 24:00", 6);
+        attrs[2] = new Attrections("Музей искусства", 7, 3000, 4, "11:30- 19:30", 4.5);
+        attrs[3] = new Attrections("Концерт Трэвиса Скотта" , 10.0, 15000, 5, "18:00 - 24:00", 3);
 
         AttractionsNear[] atNears = new AttractionsNear[4];
         atNears[0] = new AttractionsNear("Матвей", 8.7, 10000, 3, "10:00 - 22:00", 2, 3.1, 1.2);
-        atNears[1] = new AttractionsNear("Закрытый пляж", 9.6, 200, 5, "7:00-23:00", 16, 1.8, 0.5);
+        atNears[1] = new AttractionsNear("Закрытый пляж", 9.6, 200, 5, "7:00-23:00", 2, 1.8, 0.5);
         atNears[2] = new AttractionsNear("Старый замок", 7.2, 1500, 1, "14:00-20:00", 1, 2.8, 1.0);
-        atNears[3] = new AttractionsNear("Парк аттракционов", 5.2, 2500, 4, "10:00-23:00", 13, 0.8, 0.2);
+        atNears[3] = new AttractionsNear("Парк аттракционов", 5.2, 2500, 4, "10:00-23:00", 1, 0.8, 0.2);
 
         //Заполнение ресторанов и соседних к ним
         Restaurant[] rests = new Restaurant[4];
@@ -86,6 +86,7 @@ public class Main {
                         totalTime) + " часов.");
             }
         }
+        int Time = plan.getDaysForHoliday().length*24 - totalTime;
 
         //остаток1
         int remainder1 = plan.getBudget() - totalPrice;
@@ -102,9 +103,35 @@ public class Main {
         System.out.println("Вы выбрали \n" + rests[choice - 1]);
         int remainder2 = plan.getBudget() - rests[choice - 1].getPrice();
         plan.setBudget(remainder2);
-        System.out.println("Остаток: " + plan.getBudget());
 
+        System.out.println("\n Остаток: " + plan.getBudget());
+        Time -=3;
+        System.out.println("Время " + Time);
 
+        System.out.println("Поехали пройдемся по соседним достопримечательностям.");
+        int tenge = 0;
+        int ime = 0;
+        for (int i = 0; i < atNears.length; i++){
+            if (((tenge+=atNears[i].getPrice()) <= plan.getBudget())){
+                if (((ime+=(atNears[i].getDriveTime() + atNears[i].getTimeView())) <= totalTime)){
+                    System.out.println(atNears[i]);
+                }
+            }
 
+        }
+        plan.setBudget(plan.getBudget()-tenge);
+        Time-=ime;
+        System.out.println("\n Деньги: " + plan.getBudget() + "\n" + "Время " + Time);
+
+        System.out.println("Есть множество ресторанов поблизости: ");
+        for (int i = 0; i < resNears.length; i++){
+            System.out.println(resNears[i] + "\t\t\t" + (i+1));
+        }
+
+        int choice1 = scanner.nextInt();
+        Time-=resNears[choice1-1].getDriveTime();
+        plan.setBudget(plan.getBudget() - resNears[choice1-1].getPrice());
+
+        System.out.println("Вот и все! Состояние вашего кармана: " + plan.getBudget());
     }
 }

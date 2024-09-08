@@ -66,4 +66,5 @@ public class Plan {
         return "Количество дней: " + countDays + " дни отдыха: " + Arrays.toString(daysForHoliday) +
                 ", бюджет: " + budget;
     }
+
 }

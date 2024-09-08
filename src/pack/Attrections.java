@@ -1,5 +1,6 @@
 package pack;
 
+
 public class Attrections {
     private String name;
     private double rayting;
