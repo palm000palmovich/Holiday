@@ -48,9 +48,10 @@ public class Restaurant{
 
     @Override
     public String toString() {
-        return "Кухня: " + kitchen + + ',' + '\n' +
-                " стоиомость" + price +
+        return "Кухня: " + kitchen + ',' + '\n' +
+                " стоиомость " + price +
                 ", рейтинг " + rayting +
-                ", часы работы " + hours;
+                ", часы работы " + hours ;
     }
+
 }

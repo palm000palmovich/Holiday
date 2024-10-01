@@ -1,14 +1,17 @@
 package pack;
 
+
 public class Attrections {
     private String name;
     private double rayting;
     private int price;
-    private String dayWork, hourWork;
-    private int timeView;
+    private String hourWork;
+    private int dayWork;
+    private double timeView;
+
 
     //Констрктор
-    public Attrections(String name, double rayting, int price, String dayWork, String hourWork, int timeView) {
+    public Attrections(String name, double rayting, int price, int dayWork, String hourWork, double timeView) {
         this.name = name;
         this.rayting = rayting;
         this.price = price;
@@ -31,7 +34,7 @@ public class Attrections {
         return price;
     }
 
-    public String getDayWork() {
+    public int getDayWork() {
         return dayWork;
     }
 
@@ -39,7 +42,7 @@ public class Attrections {
         return hourWork;
     }
 
-    public int getTimeView() {
+    public double getTimeView() {
         return timeView;
     }
 
